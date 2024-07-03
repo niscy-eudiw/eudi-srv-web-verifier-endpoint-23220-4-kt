@@ -71,7 +71,7 @@ To build a local docker image of the service execute
 
 ## Run all verifier components together
 
-To start both verifier UI and verifier backend services together a docker compose file has been implemented that can be found [here](docker/docker-compose.yaml)
+To start both verifier UI and verifier backend services together a docker compose file has been implemented that can be found [here](docker/docker-compose.yaml).
 Running the command below will start the following service:
 - verifier: The Verifier/RP trusted end-point 
 - verifier-ui: The Verifier's UI application
@@ -92,8 +92,8 @@ cd docker
 docker-compose down
 ```
 
-The 'verifier' service can be configured by setting its configuration properties described [here](#configuration) by setting them as environment 
-variables of the service in [docker-compose.yaml](docker/docker-compose.yaml)  
+The 'verifier' service can be configured by setting its configuration properties (described [here](#configuration)) as environment 
+variables of the service definition in [docker-compose.yaml](docker/docker-compose.yaml).
 
 **Example:**
 ```yaml
@@ -111,7 +111,7 @@ variables of the service in [docker-compose.yaml](docker/docker-compose.yaml)
 ### Mount external keystore to be used with Authorization Request signing 
 When property `VERIFIER_JAR_SIGNING_KEY` is set to `LoadFromKeystore` the service can be configured (as described [here](#when-verifier_jar_signing_key-is-set-to-loadfromkeystore-the-following-environment-variables-must-also-be-configured))
 to read from a keystore the certificate used for signing authorization requests. 
-To provide an external keystore mount it to the path designated by the value of property `VERIFIER_JAR_SIGNING_KEY_KEYSTORE`.   
+To provide an external keystore mount it to the path designated by the value of property `VERIFIER_JAR_SIGNING_KEY_KEYSTORE` as in the example below.   
 
 **Example:**
 ```yaml
