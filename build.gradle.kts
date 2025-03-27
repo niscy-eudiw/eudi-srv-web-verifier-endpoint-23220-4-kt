@@ -60,6 +60,10 @@ dependencies {
     implementation(libs.tink) {
         because("Support OctetKeyPairs and extra EncryptionMethods")
     }
+    implementation(libs.dss.service)
+    implementation(libs.dss.validation)
+    implementation(libs.dss.tsl.validation)
+    implementation(libs.dss.utils.apache.commons)
 
     testImplementation(kotlin("test"))
     testImplementation(libs.kotlinx.coroutines.test)
