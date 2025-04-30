@@ -10,7 +10,7 @@ jobs:
    SAST_caller:
       uses: eu-digital-identity-wallet/eudi-infra-ci/.github/workflows/sast_bt.yml@main
       secrets:
-       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_TEST }}
        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        DOJO_TOKEN: ${{ secrets.DOJO_TOKEN }}
        DOJO_URL: ${{ secrets.DOJO_URL }}
