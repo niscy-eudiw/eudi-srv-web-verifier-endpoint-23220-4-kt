@@ -21,7 +21,6 @@ import arrow.core.raise.*
 import com.nimbusds.jose.jwk.Curve
 import com.nimbusds.jose.jwk.ECKey
 import eu.europa.ec.eudi.verifier.endpoint.domain.Clock
-import eu.europa.ec.eudi.verifier.endpoint.domain.MsoMdocDocType
 import eu.europa.ec.eudi.verifier.endpoint.port.out.x509.AttestationIssuerTrust
 import eu.europa.ec.eudi.verifier.endpoint.port.out.x509.ValidateAttestationIssuerTrust
 import id.walt.mdoc.COSECryptoProviderKeyInfo
@@ -188,7 +187,7 @@ private suspend fun Raise<DocumentError.X5CNotTrusted>.ensureTrustedChain(
     issuerChain: NonEmptyList<X509Certificate>,
     validateAttestationIssuerTrust: ValidateAttestationIssuerTrust,
 ): Nel<X509Certificate> {
-    val trust = validateAttestationIssuerTrust(issuerChain, MsoMdocDocType(docType))
+    val trust = validateAttestationIssuerTrust(issuerChain, docType)
     return when (trust) {
         AttestationIssuerTrust.Trusted -> issuerChain
         AttestationIssuerTrust.NotTrusted -> raise(DocumentError.X5CNotTrusted("Issuer X5C not trusted"))

@@ -16,8 +16,6 @@
 package eu.europa.ec.eudi.verifier.endpoint.adapter.out.sdjwtvc
 
 import arrow.core.*
-import arrow.core.Either
-import arrow.core.flatMap
 import com.nimbusds.jose.JOSEObjectType
 import com.nimbusds.jose.proc.BadJOSEException
 import com.nimbusds.jose.proc.DefaultJOSEObjectTypeVerifier
@@ -130,7 +128,7 @@ internal class SdJwtVcValidator(
     private val sdJwtVcVerifier: SdJwtVcVerifier<SignedJWT> = run {
         val x509CertificateTrust = X509CertificateTrust.usingVct { chain: List<X509Certificate>, vct ->
             val x5c = checkNotNull(chain.toNonEmptyListOrNull())
-            val trust = validateAttestationIssuerTrust(x5c, Vct(vct))
+            val trust = validateAttestationIssuerTrust(x5c, vct)
             when (trust) {
                 AttestationIssuerTrust.Trusted -> true
                 AttestationIssuerTrust.NotTrusted -> false
